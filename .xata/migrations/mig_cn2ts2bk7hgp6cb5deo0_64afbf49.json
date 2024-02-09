@@ -1,0 +1,17 @@
+{
+  "id": "mig_cn2ts2bk7hgp6cb5deo0",
+  "parentID": "mig_cn2trstrkf55e2oau8c0",
+  "checksum": "1:64afbf490ce4832f44d17fdf6a2eba8dd610e3205da9b72fa0e2b3c008b4d5a9",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "is_correct",
+          "type": "bool",
+          "defaultValue": "false"
+        },
+        "table": "choices"
+      }
+    }
+  ]
+}

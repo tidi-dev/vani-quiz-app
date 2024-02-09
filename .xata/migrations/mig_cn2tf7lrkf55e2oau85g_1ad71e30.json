@@ -1,0 +1,18 @@
+{
+  "id": "mig_cn2tf7lrkf55e2oau85g",
+  "parentID": "mig_cn2tenjk7hgp6cb5deig",
+  "checksum": "1:1ad71e30b7e60d8fd14e2d404c74ac7808bce56bbcd53eb3d82a3074b3dd859a",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "content",
+          "type": "text",
+          "notNull": true,
+          "defaultValue": "add question here"
+        },
+        "table": "questions"
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "mig_cn2tpocd4v5ejejsc7ng",
+  "parentID": "mig_cn2tkhjk7hgp6cb5dekg",
+  "checksum": "1:95ab55419160adbf03db24a537033003b79b50940ed4873d9e4476b32c2933f4",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "hint",
+          "type": "text",
+          "notNull": true,
+          "defaultValue": "add hint here"
+        },
+        "table": "questions"
+      }
+    }
+  ]
+}

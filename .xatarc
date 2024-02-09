@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://i-H-s-workspace-706mhl.ap-southeast-2.xata.sh/db/vani-quiz",
+  "codegen": {
+    "output": "src/xata.ts"
+  }
+}

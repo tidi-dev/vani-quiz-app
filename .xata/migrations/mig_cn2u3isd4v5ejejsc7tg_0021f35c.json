@@ -1,0 +1,19 @@
+{
+  "id": "mig_cn2u3isd4v5ejejsc7tg",
+  "parentID": "mig_cn2u39cd4v5ejejsc7sg",
+  "checksum": "1:0021f35cf0cfc93b0629ce2bdbc7bad7717836b87526b5f1811076ec5bf0d7ec",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "question",
+          "type": "link",
+          "link": {
+            "table": "questions"
+          }
+        },
+        "table": "choices"
+      }
+    }
+  ]
+}

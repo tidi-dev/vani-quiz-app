@@ -1,0 +1,66 @@
+{
+  "id": "mig_cn2u39cd4v5ejejsc7sg",
+  "parentID": "mig_cn2u36bk7hgp6cb5det0",
+  "checksum": "1:d1e2d9e50447cf9e13ac1662a23d787f1b8ec598e2f2d1e8c2782c82c02f52e2",
+  "operations": [
+    {
+      "addTable": {
+        "table": "choices"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "question_id",
+          "type": "string"
+        },
+        "table": "choices"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "content",
+          "type": "string"
+        },
+        "table": "choices"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "is_correct",
+          "type": "bool"
+        },
+        "table": "choices"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "xatacreatedAt",
+          "type": "datetime"
+        },
+        "table": "choices"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "xataversion",
+          "type": "int"
+        },
+        "table": "choices"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "xataupdatedAt",
+          "type": "string"
+        },
+        "table": "choices"
+      }
+    }
+  ]
+}
