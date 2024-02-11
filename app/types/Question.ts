@@ -1,5 +1,5 @@
 interface Question {
-  id: number;
+  id: string;
   content: string;
   hint: string;
   type: string;
