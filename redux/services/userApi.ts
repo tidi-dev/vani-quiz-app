@@ -12,7 +12,7 @@ export const api = createApi({
   refetchOnFocus: true,
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://localhost:3001/',
-    prepareHeaders: (headers, { getState }) => {
+    prepareHeaders: (headers) => {
       const access_token = getAccessToken();
       if (access_token) {
         headers.set('Authorization', `Bearer ${access_token}`);
@@ -24,9 +24,9 @@ export const api = createApi({
     getQuestions: builder.query({
       query: () => '/questions',
     }),
-    checkAnswer: builder.mutation<any, { id: string; answer: string[] }>({
+    checkAnswer: builder.mutation({
       query: ({ id, answer }) => ({
-        url: `question/${id}`,
+        url: `questions/${id}`,
         method: 'POST',
         body: {
           answer,
@@ -36,4 +36,4 @@ export const api = createApi({
   }),
 });
 
-export const { useGetQuestionsQuery } = api; // Destructure the generated hook
+export const { useGetQuestionsQuery, useCheckAnswerMutation } = api; // Destructure the generated hook

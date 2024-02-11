@@ -1,26 +1,35 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '../store';
 
 type AnswerState = {
-  value: string[];
+  id: string; // question id
+  answer: string[];
 };
 
 const initialState = {
-  value: [],
+  id: '',
+  answer: [],
 } as AnswerState;
 
 export const answer = createSlice({
   name: 'answer',
   initialState,
   reducers: {
-    reset: () => initialState,
-    addSingleAnswer: (state, action: PayloadAction<string>) => {
-      state.value[0] = action.payload;
+    resetAnswer: () => initialState,
+    addSingleAnswer: (state, action: PayloadAction<AnswerState>) => {
+      state.id = action.payload.id;
+      state.answer = action.payload.answer;
     },
-    addMultiple: (state, action: PayloadAction<number>) => {
-      // state.value -= action.payload;
+    addMultipleAnswer: (state, action: PayloadAction<AnswerState>) => {
+      state.id = action.payload.id;
+      state.answer.push(...action.payload.answer);
     },
   },
 });
 
-export const { addSingleAnswer, addMultiple } = answer.actions;
+export const { addSingleAnswer, addMultipleAnswer, resetAnswer } = answer.actions;
+
+export const selectQuestionId = (state: RootState) => state.answerReducer.id;
+export const selectAnswer = (state: RootState) => state.answerReducer.answer;
+
 export default answer.reducer;

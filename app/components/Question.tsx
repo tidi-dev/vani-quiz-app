@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { addSingleAnswer } from '../../redux/features/answerSlice';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { addMultipleAnswer, addSingleAnswer } from '../../redux/features/answerSlice';
+import { useAppDispatch } from '../../redux/hooks';
 
 interface Choice {
   id: string;
@@ -8,14 +8,19 @@ interface Choice {
 }
 
 interface QuestionProps {
-  question: string;
-  type: 'SINGLE_CHOICE' | 'MULTIPLE_CHOICE';
-  options: Choice[];
-  onSelectOption: (option: string) => void;
+  question: Question;
+  correctedAnswer: {
+    is_correct: boolean;
+    correct_answer: string[];
+  } | null;
+  onSelectOption: (id: string, answer: string[]) => void;
 }
 
-const Question: React.FC<QuestionProps> = ({ question, options, type, onSelectOption }) => {
-  const value = useAppSelector((state) => state.answerReducer.value);
+const Question: React.FC<QuestionProps> = ({
+  question: { id, content, choices, type },
+  onSelectOption,
+  correctedAnswer,
+}) => {
   const dispatch = useAppDispatch();
 
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
@@ -23,42 +28,51 @@ const Question: React.FC<QuestionProps> = ({ question, options, type, onSelectOp
   const handleOptionChange = (option: Choice) => {
     if (type === 'SINGLE_CHOICE') {
       // For single choice, update selected option directly
-      setSelectedOptions([option.answer]);
-      dispatch(addSingleAnswer(option.id));
+      setSelectedOptions([option.id]);
+      dispatch(addSingleAnswer({ id, answer: [option.id] }));
     } else {
       // For multiple choice, toggle selected option
-      const index = selectedOptions.indexOf(option.answer);
+      const index = selectedOptions.indexOf(option.id);
       if (index === -1) {
-        setSelectedOptions([...selectedOptions, option.answer]);
+        setSelectedOptions([...selectedOptions, option.id]);
       } else {
-        setSelectedOptions(selectedOptions.filter((item) => item !== option.answer));
+        setSelectedOptions(selectedOptions.filter((item) => item !== option.id));
       }
+
+      dispatch(addMultipleAnswer({ id, answer: [option.id] }));
     }
-    onSelectOption(option.answer);
+    onSelectOption(id, [option.id]);
   };
 
   return (
     <div className='mt-2'>
-      <p className='text-lg font-bold mb-4'>{question}</p>
+      <p className='text-lg font-bold mb-4'>{content}</p>
       <ul className='space-y-4'>
-        {options.map((option, index) => (
+        {choices.map((choice, index) => (
           <li key={index}>
             <input
               type={type === 'SINGLE_CHOICE' ? 'radio' : 'checkbox'}
-              id={option.id}
+              id={choice.id}
               name='options'
-              value={option.answer}
-              checked={selectedOptions.includes(option.answer)}
-              onChange={() => handleOptionChange(option)}
+              value={choice.id}
+              checked={selectedOptions.includes(choice.id)}
+              onChange={() => handleOptionChange(choice)}
               className='hidden'
             />
             <label
-              htmlFor={option.id}
+              htmlFor={choice.id}
               className={`block border border-vani p-3 rounded-md cursor-pointer transition duration-300 ease-in-out ${
-                selectedOptions.includes(option.answer) ? 'bg-vani text-white' : 'hover:bg-gray-100'
+                selectedOptions.includes(choice.id) ? 'bg-vani text-white' : 'hover:bg-gray-100'
+              } ${
+                correctedAnswer &&
+                correctedAnswer.is_correct &&
+                correctedAnswer.correct_answer.includes(choice.id) &&
+                'bg-green-400'
+              } ${
+                correctedAnswer && !correctedAnswer.is_correct && selectedOptions.includes(choice.id) && 'bg-red-600'
               }`}
             >
-              {option.answer}
+              {choice.answer}
             </label>
           </li>
         ))}
