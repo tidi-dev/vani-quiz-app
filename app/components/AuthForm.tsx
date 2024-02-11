@@ -2,25 +2,25 @@ import React, { useState } from 'react';
 import Input from './Input';
 
 interface AuthFormProps {
-  onSubmit: (data: { mobile: string; password: string; fullName?: string }) => void;
+  onSubmit: (data: { phoneNumber: string; password: string; fullName: string }) => void;
   isSignup: boolean;
 }
 
 const AuthForm: React.FC<AuthFormProps> = ({ onSubmit, isSignup }) => {
-  const [mobile, setMobile] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onSubmit({ mobile, password, fullName });
+    onSubmit({ phoneNumber, password, fullName });
   };
   return (
     <form onSubmit={handleSubmit} className='space-y-4'>
       {isSignup && (
         <Input id='fullName' label='Full Name' type='text' value={fullName} onChange={setFullName} required />
       )}
-      <Input id='mobile' label='Mobile' type='text' value={mobile} onChange={setMobile} required />
+      <Input id='phoneNumber' label='Mobile' type='text' value={phoneNumber} onChange={setPhoneNumber} required />
 
       <Input id='password' label='Password' type='password' value={password} onChange={setPassword} required />
 

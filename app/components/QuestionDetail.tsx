@@ -2,6 +2,7 @@
 
 import { redirect } from 'next/navigation';
 import { useState } from 'react';
+
 import Hint from './Hint';
 import Question from './Question';
 
@@ -24,6 +25,7 @@ const QuestionDetail = ({ questions }: any) => {
       setIsQuizCompleted(true);
     }
   };
+
   return (
     <div className='flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8'>
       {!isQuizCompleted ? (
@@ -31,7 +33,7 @@ const QuestionDetail = ({ questions }: any) => {
           <p className='text-lg font-bold text-vani'>Q{currentQuestionIndex + 1}</p>
           <Question
             question={questions[currentQuestionIndex].content}
-            options={questions[currentQuestionIndex].choicesquestion?.records}
+            options={questions[currentQuestionIndex].choices}
             onSelectOption={handleSelectOption}
             type={questions[currentQuestionIndex].type}
           />

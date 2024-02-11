@@ -1,9 +1,10 @@
 interface Question {
-  id: string;
+  id: number;
   content: string;
   hint: string;
-  type: 'single_choice' | 'multiple_choice';
-  choicesquestion: {
-    records: Choice[];
-  };
+  type: string;
+  choices: {
+    id: string;
+    answer: string;
+  }[];
 }
