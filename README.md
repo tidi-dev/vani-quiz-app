@@ -25,7 +25,7 @@ This is the Front End
 ## Structure
 
 ```bash
-├── app #
+├── app #main folder for UI
 │
 ├── redux #store management
 │
@@ -33,6 +33,7 @@ This is the Front End
 ```
 
 ```bash
+# structure in app folder
 ├── auth
 │   └── page.tsx
 ├── completion
