@@ -1,37 +1,74 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Vani Heroes Quiz APP
 
-## Getting Started
+This is the Front End
 
-First, run the development server:
+## Stacks
+
+- Typescript [https://www.typescriptlang.org/docs/](https://www.typescriptlang.org/docs/)
+
+- NextJS framework [https://nextjs.org/](https://nextjs.org/)
+
+- TailwindCSS [https://tailwindcss.com/](https://tailwindcss.com/)
+
+- Redux toolkit [https://redux-toolkit.js.org/](https://redux-toolkit.js.org/)
+
+- js-cookie [https://www.npmjs.com/package/js-cookie](https://www.npmjs.com/package/js-cookie)
+
+## Pre Setup
+
+- Required **Node 16** or higher
+
+- **Tools** are recommended
+
+  - [**Visual Studio Code**](https://code.visualstudio.com/): Completely free and with built-in Git support and huge extension library, it’s widely used, especially by frontend developers.
+
+## Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+├── app #
+│
+├── redux #store management
+│
+├── services #service related to authen
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```bash
+├── auth
+│   └── page.tsx
+├── completion
+│   └── page.tsx
+├── components
+│   ├── AuthForm.tsx
+│   ├── Hint.tsx
+│   ├── Input.tsx
+│   ├── MiddlewareRoute.tsx
+│   ├── Question.tsx
+│   └── QuestionDetail.tsx
+├── favicon.ico
+├── globals.css
+├── layout.tsx
+├── page.tsx
+├── quiz
+│   └── page.tsx
+└── types
+    ├── Choice.ts
+    └── Question.ts
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
 
-## Learn More
+# install required packages
 
-To learn more about Next.js, take a look at the following resources:
+yarn install
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+# start app
 
-## Deploy on Vercel
+yarn run dev
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# vani-quiz-app
+# app will run on localhost:3000
+```

@@ -15,5 +15,3 @@ export async function signup(full_name: string, phone_number: string, password: 
   const response = await axios.post(`${API_URL}/register`, { full_name, phone_number, password });
   return response.data.accessToken;
 }
-
-// Add other auth-related API functions here
