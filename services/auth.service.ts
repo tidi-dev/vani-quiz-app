@@ -13,5 +13,5 @@ export async function login(phoneNumber: string, password: string): Promise<any>
 
 export async function signup(full_name: string, phone_number: string, password: string): Promise<string> {
   const response = await axios.post(`${API_URL}/register`, { full_name, phone_number, password });
-  return response.data.accessToken;
+  return response.data;
 }
