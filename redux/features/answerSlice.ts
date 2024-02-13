@@ -22,7 +22,7 @@ export const answer = createSlice({
     },
     addMultipleAnswer: (state, action: PayloadAction<AnswerState>) => {
       state.id = action.payload.id;
-      state.answer.push(...action.payload.answer);
+      state.answer = action.payload.answer;
     },
   },
 });
