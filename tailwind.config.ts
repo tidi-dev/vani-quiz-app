@@ -20,6 +20,8 @@ const config: Config = {
       current: 'currentColor',
       vani: '#5818c6',
       white: '#fff',
+      red: '#dc2626',
+      green: '#22c55e',
     },
   },
   // plugins: [daisyui],
