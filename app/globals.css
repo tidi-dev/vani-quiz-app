@@ -6,3 +6,10 @@ body {
   background-color: #f9fafb;
 }
 
+.correct_background {
+  background-color: #22c55e;
+}
+
+.incorrect_background {
+  background-color: #dc2626;
+}

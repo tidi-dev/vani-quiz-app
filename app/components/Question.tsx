@@ -32,7 +32,6 @@ const Question: React.FC<QuestionProps> = ({
       dispatch(addSingleAnswer({ id, answer: [option.id] }));
     } else {
       // For multiple choice, toggle selected option
-      setSelectedOptions(selectedOptions.filter((id) => !choices.some((choice) => choice.id === id)));
       const index = selectedOptions.indexOf(option.id);
       let answer = [];
       if (index === -1) {
@@ -44,7 +43,8 @@ const Question: React.FC<QuestionProps> = ({
         setSelectedOptions(answer);
       }
 
-      console.log('🚀 ~ answer:', answer);
+      answer = answer.filter((id) => choices.some((choice) => choice.id === id));
+
       dispatch(addMultipleAnswer({ id, answer }));
     }
     onSelectOption(id, [option.id]);
@@ -73,13 +73,10 @@ const Question: React.FC<QuestionProps> = ({
                 correctedAnswer &&
                 correctedAnswer.is_correct &&
                 correctedAnswer.correct_answer.includes(choice.id) &&
-                'bg-green-500'
-              } ${
-                correctedAnswer && !correctedAnswer.is_correct && selectedOptions.includes(choice.id) && 'bg-red-500'
-              }`}
+                'correct_background'
+              } ${correctedAnswer && !correctedAnswer.is_correct && selectedOptions.includes(choice.id) && 'incorrect_background'}`}
             >
               {choice.answer}
-              {choice.id}
             </label>
           </li>
         ))}
